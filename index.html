@@ -615,16 +615,44 @@
         }
 
         function calculatePrediction(historyData) {
-            if (!historyData || historyData.length < 2) return null;
-            const availableResults = historyData.slice(0, Math.min(5, historyData.length));
-            let bigCount = 0, smallCount = 0;
-            availableResults.forEach(item => {
+            // historyData: [latest, older, older, ...]
+            if (!historyData || historyData.length < 3) return null;
+
+            // 1) နောက်ဆုံး 3 ပွဲ trend ရှိရင် အဲဒီဘက်ကို follow
+            const last3 = historyData.slice(0, Math.min(3, historyData.length));
+            const bsLast3 = last3
+                .map(item => classifyBigSmall(item.number))
+                .filter(Boolean);
+
+            if (bsLast3.length === 3 &&
+                bsLast3[0] === bsLast3[1] &&
+                bsLast3[1] === bsLast3[2]) {
+                // နောက်ဆုံး 3 ပွဲတိုင်တာ BIG / SMALL တစ်မျိုးတည်း
+                return bsLast3[0]; // 'BIG' or 'SMALL'
+            }
+
+            // 2) Trend မရှင်းရင် weighted vote (နောက်ဆုံး 8 ပွဲအထိ)
+            const windowSize = Math.min(8, historyData.length);
+            const recent = historyData.slice(0, windowSize);
+
+            let bigScore = 0;
+            let smallScore = 0;
+
+            // index 0 = latest ⇒ အမြင့်ဆုံး weight
+            for (let i = 0; i < recent.length; i++) {
+                const item = recent[i];
                 const bs = classifyBigSmall(item.number);
-                if (bs === 'BIG') bigCount++;
-                else if (bs === 'SMALL') smallCount++;
-            });
-            if (bigCount >= smallCount) return 'SMALL';
-            return 'BIG';
+                if (!bs) continue;
+
+                const weight = recent.length - i; // latest ပွဲ weight အများဆုံး
+                if (bs === 'BIG') bigScore += weight;
+                else if (bs === 'SMALL') smallScore += weight;
+            }
+
+            if (bigScore === 0 && smallScore === 0) return null;
+
+            // Weight ပိုများတဲ့ဘက်ကို follow
+            return bigScore > smallScore ? 'BIG' : 'SMALL';
         }
 
         function calculateRate(historyData) {
