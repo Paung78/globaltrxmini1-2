@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-    <title>Global TRX Mini V1.2 - Key Unlock</title>
+    <title>TrxWin Wingo 1 Mini V1.2 - Key Unlock</title>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,9 +22,8 @@
             --neumo-sh-dark: rgba(163, 177, 198, 0.52);
             --neumo-sh-light: rgba(255, 255, 255, 0.92);
             --neumo-inset-sm: inset 3px 3px 6px var(--neumo-sh-dark), inset -3px -3px 6px var(--neumo-sh-light);
-            --trx-red: #ff4757;
-            --trx-red-dark: #ff3838;
-            --text-trx: #be123c;
+            --bw-green: #ff4757;
+            --text-bw: #be123c;
             --main-color: #ff4757;
             --main-color-dark: #ff3838;
             --main-color-alpha-10: rgba(255, 71, 87, 0.12);
@@ -61,87 +60,108 @@
                 radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255, 71, 87, 0.1), transparent),
                 radial-gradient(ellipse 60% 40% at 80% 100%, rgba(255, 71, 87, 0.06), transparent);
         }
-        .v12-unlock-card {
-            width: min(420px, 100%);
-            padding: 40px 32px;
-            background: var(--surface);
-            border: 1px solid var(--main-color-alpha-30);
-            border-radius: 24px;
-            box-shadow: var(--shadow), 0 0 0 1px rgba(255, 71, 87, 0.08);
-            text-align: center;
+        .bw12-unlock-card {
+            width: min(480px, 100%);
+            padding: clamp(28px, 6vw, 48px);
+            background: #e4e9f0;
+            border: none;
+            border-radius: 28px;
+            box-shadow: 6px 6px 12px rgba(163, 177, 198, 0.52), -6px -6px 12px rgba(255, 255, 255, 0.92);
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 18px;
+            text-align: left;
         }
-        .v12-unlock-logo {
-            font-size: 3rem;
-            font-weight: 900;
-            letter-spacing: -0.04em;
-            color: var(--trx-red);
-            margin-bottom: 12px;
-        }
-        .v12-unlock-title { font-size: 1rem; font-weight: 700; color: var(--neumo-text); margin-bottom: 6px; }
-        .v12-unlock-sub { font-size: 0.9rem; color: var(--neumo-muted); margin-bottom: 28px; font-weight: 500; }
-        .v12-input-wrap { margin-bottom: 20px; }
-        .v12-key-input {
+        .bw12-unlock-brand-header {
             width: 100%;
-            padding: 16px 20px;
-            background: var(--surface);
-            border: 1px solid var(--main-color-alpha-30);
-            border-radius: 14px;
+            text-align: left;
+        }
+        .bw12-unlock-brand-title {
+            font-size: clamp(1rem, 3.2vw, 1.25rem);
+            font-weight: 700;
+            color: var(--neumo-text);
+            letter-spacing: 0.04em;
+            line-height: 1.2;
+            margin: 0 0 4px 0;
+        }
+        .bw12-unlock-brand-sub {
+            margin: 0;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--neumo-muted);
+            letter-spacing: 0.05em;
+        }
+        .brand-red { color: #dc2626; }
+        .brand-black { color: #111827; }
+        .bw12-input-wrap { margin-bottom: 0; }
+        .bw12-key-input {
+            width: 100%;
+            padding: 18px 22px;
+            background: #ffffff;
+            border: 2px solid var(--main-color-alpha-30);
+            border-radius: 18px;
             color: var(--neumo-text);
             font-size: 1rem;
             font-family: var(--font-sans);
-            letter-spacing: 0.15em;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
+            text-align: center;
             transition: border-color 0.2s ease, box-shadow 0.2s ease;
             box-shadow: var(--neumo-inset-sm);
         }
-        .v12-key-input::placeholder { color: var(--neumo-muted); }
-        .v12-key-input:focus {
+        .bw12-key-input::placeholder { color: var(--neumo-muted); }
+        .bw12-key-input:focus {
             outline: none;
-            border-color: var(--trx-red);
+            border-color: var(--bw-green);
             box-shadow: 0 0 0 3px var(--main-color-alpha-20);
         }
-        .v12-activate-btn {
+        .bw12-activate-btn {
             width: 100%;
-            padding: 16px;
+            padding: 18px;
             background: linear-gradient(145deg, #ff6b7a 0%, #ff4757 45%, #ff3838 100%);
             border: none;
-            border-radius: 14px;
+            border-radius: 18px;
             color: #fff;
             font-size: 0.95rem;
             font-weight: 700;
             font-family: var(--font-sans);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
             cursor: pointer;
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 6px 6px 14px rgba(255, 71, 87, 0.32), -4px -4px 12px rgba(255, 255, 255, 0.35);
+            box-shadow: 6px 6px 14px rgba(255, 71, 87, 0.3), -4px -4px 12px rgba(255, 255, 255, 0.35);
         }
-        .v12-activate-btn:hover:not(:disabled) {
+        .bw12-activate-btn:hover:not(:disabled) {
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(255, 71, 87, 0.38);
+            box-shadow: 0 8px 24px rgba(255, 71, 87, 0.4);
         }
-        .v12-activate-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-        .v12-timer {
-            margin-top: 20px;
+        .bw12-activate-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+        .bw12-timer {
+            margin-top: 0;
             padding: 14px;
             background: var(--main-color-alpha-10);
             border: 1px solid var(--main-color-alpha-30);
             border-radius: 12px;
             font-weight: 700;
             color: var(--main-color-dark);
+            text-align: center;
             display: none;
         }
-        .v12-success {
-            margin-top: 16px;
+        .bw12-success {
+            margin-top: 0;
             padding: 12px;
             background: var(--main-color-alpha-10);
             border: 1px solid var(--main-color-alpha-30);
             border-radius: 12px;
-            color: var(--text-trx);
+            color: var(--text-bw);
             font-size: 0.9rem;
             font-weight: 600;
+            text-align: center;
             display: none;
         }
-        .v12-telegram { margin-top: 24px; }
-        .v12-telegram a {
+        .bw12-telegram { margin-top: 24px; }
+        .bw12-telegram a {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -155,7 +175,7 @@
             font-size: 0.9rem;
             transition: background 0.2s ease;
         }
-        .v12-telegram a:hover { background: var(--main-color-alpha-20); }
+        .bw12-telegram a:hover { background: var(--main-color-alpha-20); }
         .results-container {
             display: none;
             max-width: 900px;
@@ -167,8 +187,8 @@
             box-shadow: var(--shadow);
             position: relative;
         }
-        .results-container.unlocked { display: block; animation: v12-fadeIn 0.3s ease; }
-        @keyframes v12-fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .results-container.unlocked { display: block; animation: bw12-fadeIn 0.3s ease; }
+        @keyframes bw12-fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .results-header {
             display: flex;
             align-items: flex-start;
@@ -180,10 +200,10 @@
         .results-container h1 {
             font-size: clamp(1.2rem, 3.5vw, 1.6rem);
             font-weight: 700;
-            color: var(--trx-red);
+            color: var(--bw-green);
             margin-bottom: 4px;
         }
-        .results-container .v12-subtitle { color: var(--muted); font-size: 0.9rem; font-weight: 500; }
+        .results-container .bw12-subtitle { color: var(--muted); font-size: 0.9rem; font-weight: 500; }
         .results-time-badge {
             position: absolute;
             top: 16px;
@@ -199,8 +219,7 @@
             display: none;
         }
         .results-time-badge.visible { display: block; }
-        .v12-anim-logo { font-size: 2rem; font-weight: 900; letter-spacing: -0.06em; color: var(--trx-red); margin-bottom: 4px; }
-        .v12-bst-box {
+        .bw12-bst-box {
             display: flex;
             align-items: center;
             justify-content: space-around;
@@ -210,34 +229,34 @@
             border-radius: 12px;
             margin-bottom: 20px;
         }
-        .v12-bst-item { text-align: center; }
-        .v12-bst-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
-        .v12-bst-value { font-size: 1.4rem; font-weight: 800; color: var(--neumo-text); }
-        .v12-pred-box {
+        .bw12-bst-item { text-align: center; }
+        .bw12-bst-label { font-size: 0.7rem; color: var(--muted); font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+        .bw12-bst-value { font-size: 1.4rem; font-weight: 800; color: var(--neumo-text); }
+        .bw12-pred-box {
             padding: 16px;
             background: var(--main-color-alpha-10);
             border: 1px solid var(--main-color-alpha-30);
             border-radius: 12px;
             margin-bottom: 20px;
         }
-        .v12-pred-row {
+        .bw12-pred-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 8px 0;
             border-bottom: 1px solid rgba(255, 71, 87, 0.15);
         }
-        .v12-pred-row:last-child { border-bottom: none; }
-        .v12-pred-label { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
-        .v12-pred-value { font-size: 0.95rem; font-weight: 700; color: var(--neumo-text); font-family: ui-monospace, monospace; }
-        .v12-pred-system-box {
+        .bw12-pred-row:last-child { border-bottom: none; }
+        .bw12-pred-label { font-size: 0.8rem; color: var(--muted); font-weight: 600; }
+        .bw12-pred-value { font-size: 0.95rem; font-weight: 700; color: var(--neumo-text); font-family: ui-monospace, monospace; }
+        .bw12-pred-system-box {
             padding: 16px;
             background: var(--main-color-alpha-10);
             border: 1px solid var(--main-color-alpha-30);
             border-radius: 12px;
             margin-bottom: 20px;
         }
-        .v12-pred-system-title {
+        .bw12-pred-system-title {
             font-size: 0.9rem;
             font-weight: 700;
             color: var(--neumo-text);
@@ -245,7 +264,7 @@
             padding-bottom: 8px;
             border-bottom: 1px solid var(--main-color-alpha-30);
         }
-        .v12-pred-system-row {
+        .bw12-pred-system-row {
             display: flex;
             justify-content: space-between;
             padding: 6px 0;
@@ -253,9 +272,9 @@
             color: var(--neumo-text);
             gap: 10px;
         }
-        .v12-pred-system-label { font-weight: 600; color: var(--muted); }
-        .v12-pred-system-value { font-family: ui-monospace, monospace; font-weight: 600; }
-        .v12-pred-system-loading {
+        .bw12-pred-system-label { font-weight: 600; color: var(--muted); }
+        .bw12-pred-system-value { font-family: ui-monospace, monospace; font-weight: 600; }
+        .bw12-pred-system-loading {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -265,39 +284,40 @@
             color: var(--muted);
             font-weight: 600;
         }
-        .v12-pred-system-loading .dots { display: inline-flex; gap: 4px; }
-        .v12-pred-system-loading .dots span {
+        .bw12-pred-system-loading .dots { display: inline-flex; gap: 4px; }
+        .bw12-pred-system-loading .dots span {
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: var(--trx-red);
-            animation: v12-dot 1.4s ease-in-out infinite;
+            background: var(--bw-green);
+            animation: bw12-dot 1.4s ease-in-out infinite;
         }
-        .v12-pred-system-loading .dots span:nth-child(1) { animation-delay: 0s; }
-        .v12-pred-system-loading .dots span:nth-child(2) { animation-delay: 0.2s; }
-        .v12-pred-system-loading .dots span:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes v12-dot {
+        .bw12-pred-system-loading .dots span:nth-child(1) { animation-delay: 0s; }
+        .bw12-pred-system-loading .dots span:nth-child(2) { animation-delay: 0.2s; }
+        .bw12-pred-system-loading .dots span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes bw12-dot {
             0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
             40% { opacity: 1; transform: scale(1.1); }
         }
-        .v12-pred-system-content { animation: v12-fadeIn 0.4s ease; }
-        .v12-win { color: #15803d; font-weight: 700; }
-        .v12-lose { color: #dc2626; font-weight: 700; }
-        .v12-table-wrap {
+        .bw12-pred-system-content { animation: bw12-fadeIn 0.4s ease; }
+        .bw12-win { color: #15803d; font-weight: 700; }
+        .bw12-lose { color: #dc2626; font-weight: 700; }
+        .bw12-table-wrap {
             background: var(--surface);
             border: 1px solid var(--main-color-alpha-30);
             border-radius: 12px;
             overflow-x: auto;
+            overflow-y: visible;
             margin-bottom: 20px;
             box-shadow: var(--neumo-inset-sm);
             -webkit-overflow-scrolling: touch;
         }
-        .v12-table-wrap table { width: 100%; border-collapse: collapse; }
-        .v12-table-wrap th:last-child,
-        .v12-table-wrap td:last-child { min-width: 58px; white-space: nowrap; }
-        .v12-table-wrap th {
+        .bw12-table-wrap table { width: 100%; border-collapse: collapse; table-layout: auto; }
+        .bw12-table-wrap th:last-child,
+        .bw12-table-wrap td:last-child { min-width: 58px; white-space: nowrap; }
+        .bw12-table-wrap th {
             padding: 14px 12px;
-            background: linear-gradient(145deg, #fff1f2 0%, #ffe4e6 100%);
+            background: linear-gradient(145deg, #ecfdf5 0%, #d1fae5 100%);
             color: var(--main-color-dark);
             font-size: 0.7rem;
             font-weight: 700;
@@ -306,99 +326,93 @@
             text-align: left;
             border-bottom: 1px solid var(--main-color-alpha-20);
         }
-        .v12-table-wrap td {
+        .bw12-table-wrap td {
             padding: 12px;
             border-top: 1px solid rgba(15, 23, 42, 0.06);
             font-size: 0.85rem;
             color: var(--neumo-text);
         }
-        .v12-table-wrap tbody tr:hover { background: var(--main-color-alpha-10); }
-        .v12-table-wrap .period-num { font-weight: 700; color: var(--text); }
-        .v12-table-wrap .result-big { color: var(--yellow-accent); font-weight: 700; }
-        .v12-table-wrap .result-small { color: var(--main-color-dark); font-weight: 700; }
-        .v12-last-update { text-align: center; font-size: 0.8rem; color: var(--muted); padding: 12px; font-weight: 600; }
+        .bw12-table-wrap tbody tr:hover { background: var(--main-color-alpha-10); }
+        .bw12-table-wrap .period-num { font-weight: 700; color: var(--text); }
+        .bw12-table-wrap .result-big { color: var(--yellow-accent); font-weight: 700; }
+        .bw12-table-wrap .result-small { color: var(--main-color-dark); font-weight: 700; }
+        .bw12-last-update { text-align: center; font-size: 0.8rem; color: var(--muted); padding: 12px; font-weight: 600; }
         .no-data { text-align: center; padding: 40px 20px; color: var(--neumo-muted); font-weight: 500; }
         #status { display: none; padding: 12px; margin-bottom: 16px; border-radius: 12px; }
         #status.loading { background: var(--main-color-alpha-10); color: var(--main-color-dark); }
         #status.error { background: rgba(220, 38, 38, 0.08); color: #dc2626; }
         @media (max-width: 768px) {
-            .v12-unlock-card { padding: 28px 20px; }
+            .bw12-unlock-card { padding: 28px 20px; }
         }
         @media (max-width: 600px) {
-            .v12-table-wrap th, .v12-table-wrap td { padding: 10px 8px; font-size: 0.75rem; }
-            .v12-key-input { letter-spacing: 0.08em; }
+            .bw12-table-wrap th, .bw12-table-wrap td { padding: 10px 8px; font-size: 0.75rem; }
+            .bw12-key-input { letter-spacing: 0.08em; }
             .results-header { flex-direction: column; align-items: flex-start; }
             .results-time-badge { position: static; margin-top: 8px; }
-            .v12-bst-box { flex-wrap: wrap; gap: 12px; }
-            .v12-pred-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .bw12-bst-box { flex-wrap: wrap; gap: 12px; }
+            .bw12-pred-row { flex-direction: column; align-items: flex-start; gap: 4px; }
         }
+    
     </style>
 </head>
 <body>
-    <!-- Key Unlock Gate (V1.2 Design) -->
     <section id="gate">
-        <div class="v12-unlock-card">
-            <div class="v12-unlock-logo">LT</div>
-            <div class="v12-unlock-title">Lottery Tricks Ai Perdition</div>
-            <div class="v12-unlock-sub">Global TRX WinGo Prediction</div>
-            <div class="v12-input-wrap">
-                <input type="text" id="keyInput" class="v12-key-input" placeholder="ENTER ACCESS KEY" autocomplete="off">
+        <div class="bw12-unlock-card">
+            <div class="bw12-unlock-brand-header">
+                <h1 class="bw12-unlock-brand-title"><span class="brand-red">SuperSel</span> <span class="brand-black">Earing</span></h1>
+                <p class="bw12-unlock-brand-sub">TrxWin1MiniV1.2</p>
             </div>
-            <button class="v12-activate-btn" id="activateBtn">
+            <div class="bw12-input-wrap">
+                <input type="text" id="keyInput" class="bw12-key-input" placeholder="ENTER ACCESS KEY" autocomplete="off">
+            </div>
+            <button class="bw12-activate-btn" id="activateBtn">
                 <i class="fas fa-unlock-alt"></i> UNLOCK
             </button>
-            <div id="keyTimer" class="v12-timer"></div>
-            <div id="keySuccess" class="v12-success">Access Granted</div>
-            <div class="v12-telegram">
-                <a href="https://t.me/LotteryTricksAiPrediction" target="_blank">
-                    <i class="fab fa-telegram"></i> JOIN TELEGRAM
-                </a>
-            </div>
+            <div id="keyTimer" class="bw12-timer"></div>
+            <div id="keySuccess" class="bw12-success">Access Granted</div>
         </div>
     </section>
 
-    <!-- Results (Global TRX History - Ck30 style) -->
     <div class="results-container" id="resultsContainer">
         <div class="results-header">
             <div class="results-header-left">
-                <div class="v12-anim-logo">LT</div>
-                <h1>Lottery Tricks Ai Perdition</h1>
-                <p class="v12-subtitle">Global Trx 1Min Prediction</p>
+                <h1><span class="brand-red">SuperSel</span> <span class="brand-black">Earing</span></h1>
+                <p class="bw12-subtitle">TrxWin1MiniV1.2</p>
             </div>
             <div id="resultsTimeRemaining" class="results-time-badge"></div>
         </div>
         <div id="status" class="status"></div>
 
-        <div class="v12-bst-box">
-            <div class="v12-bst-item"><div class="v12-bst-label">BIG</div><div class="v12-bst-value" id="bigCount">0</div></div>
-            <div class="v12-bst-item"><div class="v12-bst-label">SMALL</div><div class="v12-bst-value" id="smallCount">0</div></div>
-            <div class="v12-bst-item"><div class="v12-bst-label">TOTAL</div><div class="v12-bst-value" id="totalCount">0</div></div>
+        <div class="bw12-bst-box">
+            <div class="bw12-bst-item"><div class="bw12-bst-label">BIG</div><div class="bw12-bst-value" id="bigCount">0</div></div>
+            <div class="bw12-bst-item"><div class="bw12-bst-label">SMALL</div><div class="bw12-bst-value" id="smallCount">0</div></div>
+            <div class="bw12-bst-item"><div class="bw12-bst-label">TOTAL</div><div class="bw12-bst-value" id="totalCount">0</div></div>
         </div>
 
-        <div class="v12-pred-box">
-            <div class="v12-pred-row">
-                <span class="v12-pred-label">Next Period Number</span>
-                <span class="v12-pred-value" id="predNextPeriod">-</span>
+        <div class="bw12-pred-box">
+            <div class="bw12-pred-row">
+                <span class="bw12-pred-label">Next Period Number</span>
+                <span class="bw12-pred-value" id="predNextPeriod">-</span>
             </div>
-            <div class="v12-pred-row">
-                <span class="v12-pred-label">Prediction</span>
-                <span class="v12-pred-value" id="predValue">-</span>
+            <div class="bw12-pred-row">
+                <span class="bw12-pred-label">Prediction</span>
+                <span class="bw12-pred-value" id="predValue">-</span>
             </div>
-            <div class="v12-pred-row">
-                <span class="v12-pred-label">Trx CD Time</span>
-                <span class="v12-pred-value" id="wingoCD">60s</span>
+            <div class="bw12-pred-row">
+                <span class="bw12-pred-label">WinGo CD Time</span>
+                <span class="bw12-pred-value" id="wingoCD">60s</span>
             </div>
         </div>
 
-        <div class="v12-pred-system-box">
-            <div class="v12-pred-system-title">Prediction System</div>
+        <div class="bw12-pred-system-box">
+            <div class="bw12-pred-system-title">Prediction System</div>
             <div id="predSystemContent"></div>
         </div>
 
-        <div class="v12-table-wrap">
+        <div class="bw12-table-wrap">
             <div id="resultsTable"></div>
         </div>
-        <div id="lastUpdate" class="v12-last-update"></div>
+        <div id="lastUpdate" class="bw12-last-update"></div>
     </div>
 
     <script>
@@ -457,6 +471,7 @@
                 return true;
             } catch (e) { console.error('Login Firebase error:', e); return false; }
         }
+
         function initLoginFirebaseBigWin() {
             try {
                 if (!loginDbBigWin) {
@@ -489,7 +504,7 @@
             }
             function tryActivate(keyData, keyDb) {
                 if (!ACCEPTED_KEY_TYPES.includes(keyData.keyType || '')) {
-                    alert('Invalid key type. Use keys from CK / 6 / BigWin Key Bot.');
+                    alert('Invalid key type. Use keys from CK / 6 / TrxWin Key Bot.');
                     return;
                 }
                 if (keyData.used) {
@@ -514,9 +529,9 @@
                 startKeyMonitoring(key, keyDb);
             }
             loginDb.ref('keys/' + key).once('value').then(snapshot => {
+                btn.innerHTML = '<i class="fas fa-unlock-alt"></i> UNLOCK';
+                btn.disabled = false;
                 if (snapshot.exists()) {
-                    btn.innerHTML = '<i class="fas fa-unlock-alt"></i> UNLOCK';
-                    btn.disabled = false;
                     tryActivate(snapshot.val(), loginDb);
                 } else {
                     if (!loginDbBigWin) initLoginFirebaseBigWin();
@@ -604,8 +619,11 @@
             document.getElementById('keySuccess').style.display = 'none';
             localStorage.removeItem('expireTime');
             localStorage.removeItem('activatedKeyId');
+            localStorage.removeItem('activatedKeySource');
             const keyToClean = activatedKeyId;
             activatedKeyId = null;
+            displayedHistory = [];
+            lastSeenLatestPeriodKey = null;
             if (firebaseListener && db) { db.ref(FIREBASE_PATH).off('value', firebaseListener); firebaseListener = null; }
             if (keyStatusListener && activeKeyDb && keyToClean) {
                 activeKeyDb.ref('keys/' + keyToClean).off('value', keyStatusListener);
@@ -729,10 +747,10 @@
             const rate = calculateRate(results);
             const last5 = results.slice(0, Math.min(5, results.length));
             const analysisPattern = last5.map(r => classifyBigSmall(r.number)).filter(Boolean).join(' → ');
-            let sysHtml = '<div class="v12-pred-system-content">';
-            sysHtml += '<div class="v12-pred-system-row"><span class="v12-pred-system-label">Analysis (Last 5 B/S)</span><span class="v12-pred-system-value">' + (analysisPattern || '-') + '</span></div>';
-            sysHtml += '<div class="v12-pred-system-row"><span class="v12-pred-system-label">Next Prediction</span><span class="v12-pred-system-value">' + (nextPrediction || '-') + '</span></div>';
-            sysHtml += '<div class="v12-pred-system-row"><span class="v12-pred-system-label">Accuracy Rate</span><span class="v12-pred-system-value">' + (rate || '-') + '</span></div>';
+            let sysHtml = '<div class="bw12-pred-system-content">';
+            sysHtml += '<div class="bw12-pred-system-row"><span class="bw12-pred-system-label">Analysis (Last 5 B/S)</span><span class="bw12-pred-system-value">' + (analysisPattern || '-') + '</span></div>';
+            sysHtml += '<div class="bw12-pred-system-row"><span class="bw12-pred-system-label">Next Prediction</span><span class="bw12-pred-system-value">' + (nextPrediction || '-') + '</span></div>';
+            sysHtml += '<div class="bw12-pred-system-row"><span class="bw12-pred-system-label">Accuracy Rate</span><span class="bw12-pred-system-value">' + (rate || '-') + '</span></div>';
             sysHtml += '</div>';
             sysEl.innerHTML = sysHtml;
             if (predEl) predEl.textContent = nextPrediction || '-';
@@ -749,7 +767,7 @@
             if (!results || results.length === 0) {
                 if (nextEl) nextEl.textContent = '-';
                 if (predEl) predEl.textContent = '-';
-                if (sysEl) sysEl.innerHTML = '<div class="v12-pred-system-row"><span class="v12-pred-system-label">No data</span></div>';
+                if (sysEl) sysEl.innerHTML = '<div class="bw12-pred-system-row"><span class="bw12-pred-system-label">No data</span></div>';
                 lastRenderedPeriodKey = null;
                 return;
             }
@@ -763,7 +781,7 @@
             }
             if (nextEl) nextEl.textContent = getNextPeriod(issueNum);
             if (isNewPeriod) {
-                if (sysEl) sysEl.innerHTML = '<div class="v12-pred-system-loading">Analysis<span class="dots"><span></span><span></span><span></span></span></div>';
+                if (sysEl) sysEl.innerHTML = '<div class="bw12-pred-system-loading">Analysis<span class="dots"><span></span><span></span><span></span></span></div>';
                 if (predEl) predEl.textContent = '...';
                 predSystemTimeout = setTimeout(function() {
                     predSystemTimeout = null;
@@ -776,43 +794,89 @@
             }
         }
 
-        function renderTable(results) {
+        let displayedHistory = [];
+        let lastSeenLatestPeriodKey = null;
+
+        function getPeriodKey(r) {
+            const v = r.period ?? r.issueNumber ?? r.issue ?? r.periodNumber ?? '';
+            return String(v);
+        }
+
+        function renderTable(fullResults, historyResults) {
             const wrap = document.getElementById('resultsTable');
-            if (!results || results.length === 0) {
+            if (!fullResults || fullResults.length === 0) {
                 wrap.innerHTML = '<div class="no-data">No data. Waiting for Firebase...</div>';
                 document.getElementById('bigCount').textContent = '0';
                 document.getElementById('smallCount').textContent = '0';
                 document.getElementById('totalCount').textContent = '0';
                 updatePredictionBox([]);
+                displayedHistory = [];
+                lastSeenLatestPeriodKey = null;
                 return;
             }
-            const bigCount = results.filter(r => classifyBigSmall(r.number) === 'BIG').length;
-            const smallCount = results.filter(r => classifyBigSmall(r.number) === 'SMALL').length;
-            const totalCount = results.length;
+            const bigCount = fullResults.filter(r => classifyBigSmall(r.number) === 'BIG').length;
+            const smallCount = fullResults.filter(r => classifyBigSmall(r.number) === 'SMALL').length;
+            const totalCount = fullResults.length;
             document.getElementById('bigCount').textContent = bigCount;
             document.getElementById('smallCount').textContent = smallCount;
             document.getElementById('totalCount').textContent = totalCount;
-            updatePredictionBox(results);
+            updatePredictionBox(fullResults);
 
+            const toShow = historyResults || [];
+            if (toShow.length === 0) {
+                wrap.innerHTML = '<div class="no-data">Waiting for next period...</div>';
+                return;
+            }
             let html = '<table><thead><tr><th>#</th><th>Period</th><th>Hash</th><th>Number</th><th>B/S</th><th>Win/Lose</th></tr></thead><tbody>';
-            results.forEach((r, i) => {
+            toShow.forEach((r, i) => {
                 const bs = classifyBigSmall(r.number);
-                const periodRaw = (r.period ?? r.issueNumber ?? r.periodNumber ?? '-').toString();
+                const periodRaw = (r.period ?? r.issueNumber ?? r.issue ?? r.periodNumber ?? '-').toString();
                 const periodNum = periodRaw.replace(/[^0-9]/g, '') || periodRaw;
                 const periodShort = periodNum.length > 5 ? periodNum.slice(-5) : (periodNum || '-');
                 const hash = (r.hashValue || r.blockHashtag || '-').toString();
                 const hashShort = hash.length > 8 ? hash.slice(-8) : hash;
                 const bsClass = bs === 'BIG' ? 'result-big' : (bs === 'SMALL' ? 'result-small' : '');
-                const historyForRow = results.slice(i + 1);
+                const idxInFull = fullResults.findIndex(x => getPeriodKey(x) === getPeriodKey(r));
+                const historyForRow = idxInFull >= 0 ? fullResults.slice(idxInFull + 1) : [];
                 const predicted = calculatePrediction(historyForRow);
                 let winLoseHtml = '-';
                 if (predicted && bs) {
-                    winLoseHtml = predicted === bs ? '<span class="v12-win">Win</span>' : '<span class="v12-lose">Lose</span>';
+                    winLoseHtml = predicted === bs ? '<span class="bw12-win">Win</span>' : '<span class="bw12-lose">Lose</span>';
                 }
                 html += `<tr><td>${i+1}</td><td class="period-num">${periodShort}</td><td>${hashShort || '-'}</td><td>${r.number ?? '-'}</td><td class="${bsClass}">${bs || '-'}</td><td>${winLoseHtml}</td></tr>`;
             });
             html += '</tbody></table>';
             wrap.innerHTML = html;
+        }
+
+        function processFirebaseData(data) {
+            const list = data && data.list && Array.isArray(data.list) ? data.list : [];
+            if (list.length === 0) {
+                renderTable([], []);
+                return;
+            }
+
+            // Treat list[0] as the latest finished period result
+            const latestRecord = list[0];
+            const currentLatestKey = getPeriodKey(latestRecord);
+
+            if (!currentLatestKey) {
+                // Fallback: just render whatever history we currently have
+                renderTable(list, displayedHistory);
+                return;
+            }
+
+            if (lastSeenLatestPeriodKey === null) {
+                // First load: show the latest finished period as the first history row
+                lastSeenLatestPeriodKey = currentLatestKey;
+                displayedHistory = [latestRecord];
+            } else if (currentLatestKey !== lastSeenLatestPeriodKey) {
+                // New period arrived: prepend the new latest result to history
+                displayedHistory = [latestRecord].concat(displayedHistory);
+                lastSeenLatestPeriodKey = currentLatestKey;
+            }
+
+            renderTable(list, displayedHistory);
         }
 
         function connectFirebase() {
@@ -825,11 +889,11 @@
                 const data = snapshot.val();
                 if (data && data.list && Array.isArray(data.list)) {
                     currentResults = data.list;
-                    renderTable(currentResults);
+                    processFirebaseData(data);
                     const lu = document.getElementById('lastUpdate');
                     lu.textContent = 'Last: ' + (data.publishedAt ? new Date(data.publishedAt).toLocaleString() : '-');
                 } else {
-                    renderTable([]);
+                    renderTable([], []);
                 }
             });
         }
